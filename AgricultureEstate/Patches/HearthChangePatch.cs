@@ -1,9 +1,11 @@
-﻿using TaleWorlds.CampaignSystem;
+using HarmonyLib;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Localization;
 
 namespace AgricultureEstate
 {
+    [HarmonyPatch(typeof(Village), "get_HearthChangeExplanation")]
     internal class HearthChangePatch
     {
         private static void Postfix(Village __instance, ref ExplainedNumber __result)

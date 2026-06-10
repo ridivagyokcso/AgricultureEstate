@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using MCM.Abstractions.Base.Global;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment;
@@ -30,7 +30,7 @@ namespace AgricultureEstate
 
         public VillageLand(Village village)
         {
-            Settings settings = GlobalSettings<Settings>.Instance;
+            Settings settings = Settings.Instance;
 
             this._avalible_plots = (settings != null) ? settings.StartingAvailablePlots : 10;
             this._avalible_undeveloped_plots = (settings != null) ? settings.StartingUndevelopedPlots : 20;
@@ -165,7 +165,7 @@ namespace AgricultureEstate
         public float SlaveDeclineRate()
         {
             float num = (float)((5.0 - 0.5 * (double)this.PatrolLevel) * (Hero.MainHero.GetPerkValue(DefaultPerks.Riding.MountedPatrols) ? 0.800000011920929 : 1.0));
-            Settings instance = GlobalSettings<Settings>.Instance;
+            Settings instance = Settings.Instance;
             return num * ((instance != null) ? instance.SlaveDeclineModifier : 1f);
         }
 

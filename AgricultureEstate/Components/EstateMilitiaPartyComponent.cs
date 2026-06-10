@@ -1,4 +1,4 @@
-﻿using MCM.Abstractions.Base.Global;
+using MCM.Abstractions.Base.Global;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.Party;
@@ -96,7 +96,7 @@ namespace AgricultureEstate
 
             float returningTroops = (float)MobileParty.MemberRoster.TotalManCount;
 
-            Settings instance = GlobalSettings<Settings>.Instance;
+            Settings instance = Settings.Instance;
             float multiplier = (instance != null) ? instance.MilitiaStrengthMultiplier : 1.0f;
 
             if (multiplier < 1.0f) multiplier = 1.0f;

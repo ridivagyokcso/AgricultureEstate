@@ -1,7 +1,9 @@
-﻿using TaleWorlds.CampaignSystem.Settlements;
+using HarmonyLib;
+using TaleWorlds.CampaignSystem.Settlements;
 
 namespace AgricultureEstate
 {
+    [HarmonyPatch(typeof(Village), "get_HearthChange")]
     internal class HearthChange2Patch
     {
         private static void Postfix(Village __instance, ref float __result)

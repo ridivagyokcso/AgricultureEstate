@@ -1,4 +1,4 @@
-﻿using MCM.Abstractions.Attributes;
+using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Base.Global;
 
@@ -6,6 +6,8 @@ namespace AgricultureEstate
 {
     public class Settings : AttributeGlobalSettings<Settings>
     {
+        public static new Settings Instance => GlobalSettings<Settings>.Instance;
+
         [SettingPropertyInteger("{=ae_settings_start_plots}Starting Available Plots", 0, 100, "0", Order = 10, RequireRestart = false, HintText = "{=ae_settings_start_plots_hint}The number of available plots when a village is first visited.")]
         [SettingPropertyGroup("{=ae_settings_group_general}General Settings")]
         public int StartingAvailablePlots { get; set; } = 10;
@@ -60,7 +62,7 @@ namespace AgricultureEstate
         [SettingPropertyGroup("{=ae_settings_group_slave}Slave Settings")]
         public float SlaveDeclineModifier { get; set; } = 1f;
 
-        
+
 
         public override string Id
         {

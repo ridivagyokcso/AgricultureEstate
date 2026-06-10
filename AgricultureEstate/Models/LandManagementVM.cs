@@ -1,4 +1,4 @@
-﻿using AgricultureEstate.l18n;
+using AgricultureEstate.l18n;
 using Helpers;
 using MCM.Abstractions.Base.Global;
 using System;
@@ -171,7 +171,7 @@ namespace AgricultureEstate
             {
                 if (_village_land.CurrentProject != "None")
                 {
-                    Settings instance = GlobalSettings<Settings>.Instance;
+                    Settings instance = Settings.Instance;
                     int maxTime = (instance != null) ? instance.ProjectTime * 24 : 0;
                     return _village_land.ProjectProgress.ToString() + "/" + maxTime.ToString();
                 }

@@ -1,4 +1,4 @@
-﻿using AgricultureEstate.l18n;
+using AgricultureEstate.l18n;
 using Helpers;
 using MCM.Abstractions.Base.Global;
 using System;
@@ -262,7 +262,7 @@ namespace AgricultureEstate
 
             village.Settlement.Militia -= troopsToSend;
 
-            Settings instance = GlobalSettings<Settings>.Instance;
+            Settings instance = Settings.Instance;
             float multiplier = (instance != null) ? instance.MilitiaStrengthMultiplier : 1.0f;
 
             int buffedTroopCount = (int)(troopsToSend * multiplier);
@@ -312,7 +312,7 @@ namespace AgricultureEstate
 
         private void RemoveInHostileTick()
         {
-            Settings instance = GlobalSettings<Settings>.Instance;
+            Settings instance = Settings.Instance;
             if (instance != null && !instance.DestroyPlotsOnWar)
             {
                 foreach (KeyValuePair<Settlement, VillageLand> keyValuePair in AgricultureEstateBehavior.VillageLands)
@@ -397,7 +397,7 @@ namespace AgricultureEstate
 
                     InformationManager.ShowInquiry(new InquiryData(new TextObject("{=agricultureestate_slave_revolt_title}Slave Revolt", null).ToString(), Localization.SetTextVariables("{=agricultureestate_slave_revolt_description}The slave at your estate in the village of {SETTLEMENT_NAME} have revolted.", new KeyValuePair<string, string>[] { new KeyValuePair<string, string>("SETTLEMENT_NAME", village.Name.ToString()) }).ToString(), true, false, new TextObject("{=agricultureestate_slave_revolt_button_text}Not Good", null).ToString(), "", null, null, "", 0f, null, null, null), false, false);
 
-                    mobileParty.SetMoveRaidSettlement(village.Settlement, MobileParty.NavigationType.Default);
+                    mobileParty.SetMoveRaidSettlement(village.Settlement, MobileParty.NavigationType.Default, false);
                 }
             }
         }
@@ -413,7 +413,7 @@ namespace AgricultureEstate
                 {
                     value.ProjectProgress++;
 
-                    Settings instance = GlobalSettings<Settings>.Instance;
+                    Settings instance = Settings.Instance;
                     int projectTimeRequired = (instance != null) ? instance.ProjectTime * 24 : 24;
 
                     if (value.ProjectProgress >= projectTimeRequired)
@@ -495,7 +495,7 @@ namespace AgricultureEstate
             {
                 for (int i = 0; i < troopRosterElement.Number; i++)
                 {
-                    Settings instance = GlobalSettings<Settings>.Instance;
+                    Settings instance = Settings.Instance;
                     if (instance != null && instance.SlaveDeclineModifier == 0f)
                     {
                         return;

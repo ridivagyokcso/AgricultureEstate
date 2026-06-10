@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using MCM.Abstractions.Base.Global;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace AgricultureEstate
         {
             get
             {
-                Settings instance = GlobalSettings<Settings>.Instance;
+                Settings instance = Settings.Instance;
                 return (instance != null) ? instance.PlotBuyPrice : 800;
             }
         }
@@ -27,7 +27,7 @@ namespace AgricultureEstate
         {
             get
             {
-                Settings instance = GlobalSettings<Settings>.Instance;
+                Settings instance = Settings.Instance;
                 return (instance != null) ? instance.PlotSellPrice : 200;
             }
         }
@@ -36,7 +36,7 @@ namespace AgricultureEstate
         {
             get
             {
-                Settings instance = GlobalSettings<Settings>.Instance;
+                Settings instance = Settings.Instance;
                 return (instance != null) ? instance.UndevelopedPlotBuyPrice : 400;
             }
         }
@@ -45,7 +45,7 @@ namespace AgricultureEstate
         {
             get
             {
-                Settings instance = GlobalSettings<Settings>.Instance;
+                Settings instance = Settings.Instance;
                 return (instance != null) ? instance.UndevelopedPlotSellPrice : 100;
             }
         }
@@ -54,7 +54,7 @@ namespace AgricultureEstate
         {
             get
             {
-                Settings instance = GlobalSettings<Settings>.Instance;
+                Settings instance = Settings.Instance;
                 return (instance != null) ? instance.ProjectCost : 20000;
             }
         }
@@ -63,7 +63,7 @@ namespace AgricultureEstate
         {
             get
             {
-                Settings instance = GlobalSettings<Settings>.Instance;
+                Settings instance = Settings.Instance;
                 return (instance != null) ? instance.LandRentScale : 1f;
             }
         }
@@ -72,7 +72,7 @@ namespace AgricultureEstate
         {
             get
             {
-                Settings instance = GlobalSettings<Settings>.Instance;
+                Settings instance = Settings.Instance;
                 return (instance != null) ? instance.SlaveProductionScale : 1f;
             }
         }
@@ -91,6 +91,8 @@ namespace AgricultureEstate
             }
         }
 
+
+
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
             base.OnGameStart(game, gameStarterObject);
@@ -98,7 +100,6 @@ namespace AgricultureEstate
             if (game.GameType is Campaign)
             {
                 ((CampaignGameStarter)gameStarterObject).AddBehavior(new AgricultureEstateBehavior());
-                ((CampaignGameStarter)gameStarterObject).AddModel(new MilitiaSpeedModel());
             }
         }
 

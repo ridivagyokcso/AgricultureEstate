@@ -1,25 +1,23 @@
-﻿using TaleWorlds.CampaignSystem;
+using HarmonyLib;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameComponents;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.Localization;
 
 namespace AgricultureEstate
 {
-    public class MilitiaSpeedModel : DefaultPartySpeedCalculatingModel
+    [HarmonyPatch(typeof(DefaultPartySpeedCalculatingModel), "CalculateFinalSpeed")]
+    internal class MilitiaSpeedPatch
     {
-        public override ExplainedNumber CalculateFinalSpeed(MobileParty mobileParty, ExplainedNumber finalSpeed)
+        private static void Postfix(MobileParty mobileParty, ref ExplainedNumber __result)
         {
-            ExplainedNumber result = base.CalculateFinalSpeed(mobileParty, finalSpeed);
-
             if (mobileParty != null && mobileParty.PartyComponent is EstateMilitiaPartyComponent)
             {
                 float sizeBonus = mobileParty.MemberRoster.TotalManCount * 0.40f;
                 float totalBonus = 2.0f + sizeBonus;
 
-                result.Add(totalBonus, new TextObject("{=ae_militia_speed}Estate Militia Bonus"));
+                __result.Add(totalBonus, new TextObject("{=ae_militia_speed}Estate Militia Bonus"));
             }
-
-            return result;
         }
     }
 }

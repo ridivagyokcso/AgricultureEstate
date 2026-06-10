@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <ProjectGuid>{B180BF6C-C09A-4D74-92C0-B9644A72F108}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -47,7 +47,7 @@
     <Compile Include="Models\EstateEntryVM.cs" />
     <Compile Include="Models\EstateListVM.cs" />
     <Compile Include="Models\LandManagementVM.cs" />
-    <Compile Include="Models\MilitiaSpeedModel.cs" />
+    <Compile Include="Patches\MilitiaSpeedPatch.cs" />
     <Compile Include="Patches\ClanFinancePatch.cs" />
     <Compile Include="l18n\Localization.cs" />
     <Compile Include="Patches\HearthChange2Patch.cs" />
@@ -63,10 +63,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Bannerlord.MCM">
-      <Version>5.11.3</Version>
+      <Version>5.11.4</Version>
     </PackageReference>
     <PackageReference Include="Bannerlord.ReferenceAssemblies">
-      <Version>1.3.9.103334</Version>
+      <Version>1.4.5.115026</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />
